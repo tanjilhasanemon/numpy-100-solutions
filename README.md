@@ -19,7 +19,7 @@ My solutions to the [100 NumPy exercises](https://github.com/rougier/numpy-100) 
 | Problems | Notebook | Solved | Status |
 |---|---|---|---|
 | 1–10 | [`001-010.ipynb`](notebooks/001-010.ipynb) | 10/10 | ✅ |
-| 11–20 | [`011-020.ipynb`](notebooks/011-020.ipynb) | 0/10 | ✅ |
+| 11–20 | [`011-020.ipynb`](notebooks/011-020.ipynb) | 10/10 | ✅ |
 | 21–30 | [`021-030.ipynb`](notebooks/021-030.ipynb) | 0/10 | ⬜ |
 | 31–40 | [`031-040.ipynb`](notebooks/031-040.ipynb) | 0/10 | ⬜ |
 | 41–50 | [`041-050.ipynb`](notebooks/041-050.ipynb) | 0/10 | ⬜ |
