@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![NumPy](https://img.shields.io/badge/numpy-practice-013243)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
-![Progress](https://img.shields.io/badge/progress-10%2F100-orange)
+![Progress](https://img.shields.io/badge/progress-20%2F100-orange)
 
 My solutions to the [100 NumPy exercises](https://github.com/rougier/numpy-100) by Nicolas P. Rougier, written while learning NumPy. Each problem includes a commented solution plus a short note on the concept behind it.
 
