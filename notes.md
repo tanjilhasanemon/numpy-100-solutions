@@ -24,6 +24,13 @@ Short takeaways while solving. One line per concept is enough.
 - **NaN and floats:** `nan != nan`, comparisons with `nan` are False, so use `np.isnan`; compare floats with `np.isclose`, never `==`.
 - **Flat vs multi-dim index:** the 100th element has flat index 99; `np.unravel_index(99, shape)` gives its coordinates.
 
+### Problems 21–25
+- **`np.tile`:** repeats a small block; a 2x2 block tiled `(4, 4)` gives an 8x8 checkerboard.
+- **Normalization:** z-score `(Z - Z.mean()) / Z.std()` or min-max `(Z - Z.min()) / (Z.max() - Z.min())`; both rely on broadcasting.
+- **Structured dtypes:** `np.dtype([("r", np.ubyte), ...])` gives named fields per element; read one with `arr["r"]`.
+- **Matrix product:** `A @ B` / `np.dot(A, B)` needs matching inner dimensions; `*` is element-wise.
+- **Boolean masks:** combine with `&` / `|` and parentheses, never `and` / `or`; `Z[mask] *= -1` edits in place.
+
 ## Tricky problems (revisit)
 | # | Why it was tricky | Revisit date |
 |---|---|---|
@@ -38,6 +45,10 @@ Short takeaways while solving. One line per concept is enough.
 | 18 | `np.diag` with `k` offset | Oct 26 |
 | 19 | Step slicing for the checkerboard | Oct 26 |
 | 20 | Flat index 99, not 100 | Oct 26 |
+| 21 | Choosing the right block and reps for `np.tile` | Oct 29 |
+| 22 | Two meanings of "normalize" | Oct 29 |
+| 23 | Structured dtype syntax | Oct 29 |
+| 25 | `&` with parentheses for masks | Oct 29 |
 
 ## Idiomatic tricks I want to remember
 - Prefer vectorized operations and slicing over Python loops
