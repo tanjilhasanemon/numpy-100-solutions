@@ -31,6 +31,13 @@ Short takeaways while solving. One line per concept is enough.
 - **Matrix product:** `A @ B` / `np.dot(A, B)` needs matching inner dimensions; `*` is element-wise.
 - **Boolean masks:** combine with `&` / `|` and parentheses, never `and` / `or`; `Z[mask] *= -1` edits in place.
 
+### Problems 26–30
+- **Built-in vs NumPy `sum`:** `sum(x, -1)` starts counting from -1; `np.sum(x, -1)` sums along the last axis. Avoid `from numpy import *`, which shadows built-ins.
+- **Operator parsing:** `Z <- Z` is `Z < (-Z)`; chained comparisons like `Z<Z>Z` fail on arrays because `and` needs a single True/False.
+- **Division by zero:** `0/0` is `nan`; integer `0//0` is `0` (both with warnings); casting `nan` to int is platform dependent.
+- **Rounding away from zero:** `np.where(Z > 0, np.ceil(Z), np.floor(Z))`; `np.round` rounds to nearest instead.
+- **Common values:** `np.intersect1d(a, b)` for sorted unique matches; `np.isin(a, b)` for a boolean mask.
+
 ## Tricky problems (revisit)
 | # | Why it was tricky | Revisit date |
 |---|---|---|
@@ -49,6 +56,11 @@ Short takeaways while solving. One line per concept is enough.
 | 22 | Two meanings of "normalize" | Oct 29 |
 | 23 | Structured dtype syntax | Oct 29 |
 | 25 | `&` with parentheses for masks | Oct 29 |
+| 26 | Built-in `sum` vs `np.sum` with `-1` | Oct 31 |
+| 27 | Operator precedence and chained comparisons | Oct 31 |
+| 28 | Division by zero and nan-to-int casts | Oct 31 |
+| 29 | Rounding away from zero vs `np.round` | Oct 31 |
+| 30 | `intersect1d` vs `isin` | Oct 31 |
 
 ## Idiomatic tricks I want to remember
 - Prefer vectorized operations and slicing over Python loops
