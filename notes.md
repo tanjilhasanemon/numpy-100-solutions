@@ -38,6 +38,13 @@ Short takeaways while solving. One line per concept is enough.
 - **Rounding away from zero:** `np.where(Z > 0, np.ceil(Z), np.floor(Z))`; `np.round` rounds to nearest instead.
 - **Common values:** `np.intersect1d(a, b)` for sorted unique matches; `np.isin(a, b)` for a boolean mask.
 
+### Problems 31–35
+- **Warnings:** `np.seterr(all="ignore")` is global and returns the old settings; prefer `with np.errstate(...)` for a single block.
+- **Real vs complex sqrt:** `np.sqrt(-1)` is `nan`; `np.emath.sqrt(-1)` is `1j`; `nan == 1j` is False.
+- **Dates:** `np.datetime64("today")` plus or minus `np.timedelta64(n, "D")`.
+- **Date ranges:** `np.arange("2016-07", "2016-08", dtype="datetime64[D]")` lists every day of July (stop is exclusive).
+- **In-place math:** ufuncs take `out=` (`np.add(A, B, out=B)`) so no temporary arrays are created; arrays must be float for in-place division.
+
 ## Tricky problems (revisit)
 | # | Why it was tricky | Revisit date |
 |---|---|---|
@@ -61,6 +68,10 @@ Short takeaways while solving. One line per concept is enough.
 | 28 | Division by zero and nan-to-int casts | Oct 31 |
 | 29 | Rounding away from zero vs `np.round` | Oct 31 |
 | 30 | `intersect1d` vs `isin` | Oct 31 |
+| 31 | `seterr` vs `errstate` | Nov 3 |
+| 32 | Real `sqrt` returns nan, `emath` returns complex | Nov 3 |
+| 34 | Date ranges with `datetime64[D]` | Nov 3 |
+| 35 | Chaining ufuncs with `out=` | Nov 3 |
 
 ## Idiomatic tricks I want to remember
 - Prefer vectorized operations and slicing over Python loops
