@@ -45,6 +45,13 @@ Short takeaways while solving. One line per concept is enough.
 - **Date ranges:** `np.arange("2016-07", "2016-08", dtype="datetime64[D]")` lists every day of July (stop is exclusive).
 - **In-place math:** ufuncs take `out=` (`np.add(A, B, out=B)`) so no temporary arrays are created; arrays must be float for in-place division.
 
+### Problems 36–40
+- **Integer part:** `Z - Z % 1`, `np.floor`, `astype(int)`, `np.trunc` agree for positives; floor and trunc differ for negatives.
+- **Row broadcasting:** `Z += np.arange(5)` adds a length-5 row to every row of a 5x5 array.
+- **Generators:** `np.fromiter(gen, dtype=int, count=n)` builds an array without making a list; `np.array(gen)` does not work.
+- **Open interval:** `np.linspace(0, 1, 11, endpoint=False)[1:]` gives 10 values strictly between 0 and 1.
+- **Sorting:** `np.sort(Z)` returns a copy, `Z.sort()` sorts in place, `argsort` returns indices, `[::-1]` reverses.
+
 ## Tricky problems (revisit)
 | # | Why it was tricky | Revisit date |
 |---|---|---|
@@ -72,6 +79,9 @@ Short takeaways while solving. One line per concept is enough.
 | 32 | Real `sqrt` returns nan, `emath` returns complex | Nov 3 |
 | 34 | Date ranges with `datetime64[D]` | Nov 3 |
 | 35 | Chaining ufuncs with `out=` | Nov 3 |
+| 36 | Floor vs trunc vs astype for integer part | Nov 8 |
+| 38 | `np.fromiter` needs a dtype | Nov 8 |
+| 39 | Excluding both ends with `linspace` | Nov 8 |
 
 ## Idiomatic tricks I want to remember
 - Prefer vectorized operations and slicing over Python loops
