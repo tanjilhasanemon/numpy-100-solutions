@@ -52,6 +52,18 @@ Short takeaways while solving. One line per concept is enough.
 - **Open interval:** `np.linspace(0, 1, 11, endpoint=False)[1:]` gives 10 values strictly between 0 and 1.
 - **Sorting:** `np.sort(Z)` returns a copy, `Z.sort()` sorts in place, `argsort` returns indices, `[::-1]` reverses.
 
+### Problems 41–50
+- **Small-array speed:** `np.add.reduce(Z)` skips the `np.sum` wrapper overhead; measure with `timeit`.
+- **Equality checks:** `np.array_equal` is strict (shape and values); `np.allclose` uses a tolerance and broadcasts.
+- **Read-only arrays:** `Z.flags.writeable = False` makes writes raise `ValueError`.
+- **Polar coordinates:** `r = np.hypot(x, y)`, `theta = np.arctan2(y, x)` (handles all quadrants).
+- **Replace the max:** `Z[Z.argmax()] = 0` changes the first max only; `Z[Z == Z.max()] = 0` changes all.
+- **Structured grids:** `np.meshgrid` plus a structured dtype with `x` and `y` fields covers [0,1]x[0,1].
+- **Outer ufuncs:** `np.subtract.outer(X, Y)` builds all pairwise differences; `1 / that` is the Cauchy matrix.
+- **Type limits:** `np.iinfo(dtype)` and `np.finfo(dtype)` give min, max and eps.
+- **Printing everything:** `with np.printoptions(threshold=sys.maxsize):` prints the full array.
+- **Closest value:** `Z[np.abs(Z - z).argmin()]`.
+
 ## Tricky problems (revisit)
 | # | Why it was tricky | Revisit date |
 |---|---|---|
@@ -82,6 +94,14 @@ Short takeaways while solving. One line per concept is enough.
 | 36 | Floor vs trunc vs astype for integer part | Nov 8 |
 | 38 | `np.fromiter` needs a dtype | Nov 8 |
 | 39 | Excluding both ends with `linspace` | Nov 8 |
+| 41 | Why `np.add.reduce` beats `np.sum` on small arrays | Nov 10 |
+| 42 | `array_equal` vs `allclose` | Nov 10 |
+| 43 | Read-only flag | Nov 10 |
+| 44 | `arctan2` vs `arctan` | Nov 10 |
+| 46 | Structured array with `meshgrid` | Nov 10 |
+| 47 | `ufunc.outer` | Nov 10 |
+| 48 | `iinfo` vs `finfo` | Nov 10 |
+| 49 | `printoptions` threshold | Nov 10 |
 
 ## Idiomatic tricks I want to remember
 - Prefer vectorized operations and slicing over Python loops

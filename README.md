@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![NumPy](https://img.shields.io/badge/numpy-practice-013243)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
-![Progress](https://img.shields.io/badge/progress-40%2F100-orange)
+![Progress](https://img.shields.io/badge/progress-50%2F100-orange)
 
 My solutions to the [100 NumPy exercises](https://github.com/rougier/numpy-100) by Nicolas P. Rougier, written while learning NumPy. Each problem includes a commented solution plus a short note on the concept behind it.
 
@@ -14,7 +14,7 @@ My solutions to the [100 NumPy exercises](https://github.com/rougier/numpy-100) 
 
 ## Progress
 
-**Solved: 40 / 100**
+**Solved: 50 / 100**
 
 | Problems | Notebook | Solved | Status |
 |---|---|---|---|
@@ -22,7 +22,7 @@ My solutions to the [100 NumPy exercises](https://github.com/rougier/numpy-100) 
 | 11–20 | [`011-020.ipynb`](notebooks/011-020.ipynb) | 10/10 | ✅ |
 | 21–30 | [`021-030.ipynb`](notebooks/021-030.ipynb) | 10/10 | ✅ |
 | 31–40 | [`031-040.ipynb`](notebooks/031-040.ipynb) | 10/10 | ✅ |
-| 41–50 | [`041-050.ipynb`](notebooks/041-050.ipynb) | 0/10 | ⬜ |
+| 41–50 | [`041-050.ipynb`](notebooks/041-050.ipynb) | 10/10 | ✅ |
 | 51–60 | [`051-060.ipynb`](notebooks/051-060.ipynb) | 0/10 | ⬜ |
 | 61–70 | [`061-070.ipynb`](notebooks/061-070.ipynb) | 0/10 | ⬜ |
 | 71–80 | [`071-080.ipynb`](notebooks/071-080.ipynb) | 0/10 | ⬜ |
