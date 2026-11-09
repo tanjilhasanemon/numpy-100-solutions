@@ -64,6 +64,18 @@ Short takeaways while solving. One line per concept is enough.
 - **Printing everything:** `with np.printoptions(threshold=sys.maxsize):` prints the full array.
 - **Closest value:** `Z[np.abs(Z - z).argmin()]`.
 
+### Problems 51–60
+- **Nested structured dtypes:** a field can hold another list of fields; access with `Z["position"]["x"]`.
+- **Pairwise distances:** broadcast a column against a row: `X[:, None] - X[None, :]`, then `sqrt(dx² + dy²)`.
+- **In-place type conversion:** `Y = Z.view(np.int32); Y[:] = Z` converts float32 to int32 without a new buffer.
+- **Reading messy text:** `np.genfromtxt(f, delimiter=",")` handles blanks (nan, or -1 for `dtype=int`).
+- **enumerate for arrays:** `np.ndenumerate(Z)` gives `(index, value)`; `np.ndindex(shape)` gives indices only.
+- **Gaussian grid:** `meshgrid` for coordinates, then `np.exp(-(d - mu)**2 / (2 * sigma**2))`.
+- **Random placement:** `rng.choice(n*n, p, replace=False)` for unique positions, then `np.put`.
+- **Row-wise operations:** `X - X.mean(axis=1, keepdims=True)`; `keepdims` keeps the shape broadcastable.
+- **Sort rows by a column:** `Z[Z[:, n].argsort()]`.
+- **Null columns:** `~Z.any(axis=0)` marks all-zero columns.
+
 ## Tricky problems (revisit)
 | # | Why it was tricky | Revisit date |
 |---|---|---|
@@ -102,6 +114,14 @@ Short takeaways while solving. One line per concept is enough.
 | 47 | `ufunc.outer` | Nov 10 |
 | 48 | `iinfo` vs `finfo` | Nov 10 |
 | 49 | `printoptions` threshold | Nov 10 |
+| 51 | Nested structured dtype syntax | Nov 12 |
+| 52 | Broadcasting for pairwise distances | Nov 12 |
+| 53 | `view` + slice assignment for in-place cast | Nov 12 |
+| 54 | `genfromtxt` and missing values | Nov 12 |
+| 56 | Gaussian formula on a meshgrid | Nov 12 |
+| 57 | `choice(replace=False)` + `np.put` | Nov 12 |
+| 58 | Why `keepdims=True` matters | Nov 12 |
+| 59 | `argsort` on one column, reindex rows | Nov 12 |
 
 ## Idiomatic tricks I want to remember
 - Prefer vectorized operations and slicing over Python loops
