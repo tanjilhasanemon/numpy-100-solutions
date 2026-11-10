@@ -76,6 +76,18 @@ Short takeaways while solving. One line per concept is enough.
 - **Sort rows by a column:** `Z[Z[:, n].argsort()]`.
 - **Null columns:** `~Z.any(axis=0)` marks all-zero columns.
 
+### Problems 61–70
+- **Nearest value:** `Z[np.abs(Z - z).argmin()]`; use `.flat` for multi-dimensional arrays.
+- **Iterators:** `np.nditer([A, B, None])` broadcasts arrays together and can allocate the output.
+- **Subclassing ndarray:** create with `__new__` and `.view(cls)`; copy attributes in `__array_finalize__`.
+- **Repeated indices:** `Z[I] += 1` counts repeats once; use `np.bincount(I, minlength=n)` or `np.add.at(Z, I, 1)`.
+- **Accumulating by index:** `np.bincount(I, weights=X)` sums `X` per index.
+- **Counting colors:** `np.unique(img.reshape(-1, 3), axis=0)`, or encode RGB into one integer (cast to `uint32` first to avoid overflow).
+- **Multiple axes:** `A.sum(axis=(-2, -1))` reduces the last two axes at once.
+- **Grouped means:** `np.bincount(S, weights=D) / np.bincount(S)`.
+- **Diagonal of a product:** `np.einsum("ij,ji->i", A, B)` skips the full matrix product.
+- **Interleaving zeros:** `Z0[::nz + 1] = Z` on a zero array of the right length.
+
 ## Tricky problems (revisit)
 | # | Why it was tricky | Revisit date |
 |---|---|---|
@@ -122,6 +134,15 @@ Short takeaways while solving. One line per concept is enough.
 | 57 | `choice(replace=False)` + `np.put` | Nov 12 |
 | 58 | Why `keepdims=True` matters | Nov 12 |
 | 59 | `argsort` on one column, reindex rows | Nov 12 |
+| 62 | `nditer` with an allocated output | Nov 15 |
+| 63 | `__new__` and `__array_finalize__` | Nov 15 |
+| 64 | Why `Z[I] += 1` ignores repeats | Nov 15 |
+| 65 | `bincount` with `weights` | Nov 15 |
+| 66 | Counting unique colors without overflow | Nov 15 |
+| 67 | Tuple of axes in `sum` | Nov 15 |
+| 68 | Grouped mean with `bincount` | Nov 15 |
+| 69 | `einsum` for the diagonal of a product | Nov 15 |
+| 70 | Step-slice assignment | Nov 15 |
 
 ## Idiomatic tricks I want to remember
 - Prefer vectorized operations and slicing over Python loops
