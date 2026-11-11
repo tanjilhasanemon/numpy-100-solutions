@@ -88,6 +88,18 @@ Short takeaways while solving. One line per concept is enough.
 - **Diagonal of a product:** `np.einsum("ij,ji->i", A, B)` skips the full matrix product.
 - **Interleaving zeros:** `Z0[::nz + 1] = Z` on a zero array of the right length.
 
+### Problems 71–80
+- **Broadcasting aligns from the right:** `(5,5,3) * (5,5)` fails; use `B[:, :, None]` to make it `(5,5,1)`.
+- **Swapping rows:** `A[[0, 1]] = A[[1, 0]]` works (fancy indexing copies); `A[0], A[1] = A[1], A[0]` does not (views).
+- **Unique segments:** sort the two vertices inside each edge, then `np.unique(edges, axis=0)`.
+- **Inverse of `bincount`:** `np.repeat(np.arange(len(C)), C)`.
+- **Moving average:** `cumsum` trick, `np.convolve(..., mode="valid")`, or `sliding_window_view(Z, n).mean(axis=-1)`.
+- **Sliding windows:** `sliding_window_view` is the safe view; `as_strided` is low-level and risky.
+- **In-place negation:** `np.logical_not(Z, out=Z)` for booleans, `np.negative(Y, out=Y)` for floats.
+- **Point-to-line distance:** projection onto the line, or `|T x (p - P0)| / |T|`; clip `U` to `[0, 1]` for segments.
+- **All points vs all lines:** broadcast points as `(m, 1)` against lines as `(1, n)` to get an `(m, n)` result.
+- **Padded sub-window:** copy only the overlap between the window and the array into a `fill`-filled output.
+
 ## Tricky problems (revisit)
 | # | Why it was tricky | Revisit date |
 |---|---|---|
@@ -143,6 +155,16 @@ Short takeaways while solving. One line per concept is enough.
 | 68 | Grouped mean with `bincount` | Nov 15 |
 | 69 | `einsum` for the diagonal of a product | Nov 15 |
 | 70 | Step-slice assignment | Nov 15 |
+| 71 | Adding a trailing axis for broadcasting | Nov 18 |
+| 72 | Why the Python swap fails on arrays | Nov 18 |
+| 73 | Sorting vertices within each edge before `unique` | Nov 18 |
+| 74 | `np.repeat` as the inverse of `bincount` | Nov 18 |
+| 75 | Cumulative-sum moving average | Nov 18 |
+| 76 | `sliding_window_view` vs `as_strided` | Nov 18 |
+| 77 | `out=` for in-place negation | Nov 18 |
+| 78 | Projection onto a line | Nov 18 |
+| 79 | Broadcasting points against lines | Nov 18 |
+| 80 | Clipping the window to the array bounds | Nov 18 |
 
 ## Idiomatic tricks I want to remember
 - Prefer vectorized operations and slicing over Python loops
