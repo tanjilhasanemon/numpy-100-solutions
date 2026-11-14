@@ -100,6 +100,17 @@ Short takeaways while solving. One line per concept is enough.
 - **All points vs all lines:** broadcast points as `(m, 1)` against lines as `(1, n)` to get an `(m, n)` result.
 - **Padded sub-window:** copy only the overlap between the window and the array into a `fill`-filled output.
 
+### Problems 81–90
+- **Sliding windows:** `sliding_window_view(Z, 4)` for 1D, `sliding_window_view(Z, (3, 3))` for 2D blocks; read-only views.
+- **Matrix rank:** `np.linalg.matrix_rank(Z)`, which counts singular values above a tolerance.
+- **Most frequent value:** `np.bincount(Z).argmax()` (non-negative ints) or `np.unique(Z, return_counts=True)`.
+- **Symmetric matrix class:** subclass `ndarray` and mirror every write in `__setitem__`.
+- **Summing over several axes at once:** `np.tensordot(M, V, axes=[[0, 2], [0, 1]])` or `np.einsum("pij,pjk->ik", M, V)`.
+- **Block sums:** `np.add.reduceat` along both axes, or `reshape(4, k, 4, k).sum(axis=(1, 3))`.
+- **Game of Life:** sum 8 shifted views for neighbour counts, then use birth/survive masks; test with a glider and a blinker.
+- **Top n values:** `np.argpartition(-Z, n)[:n]` is faster than a full `argsort` for big arrays.
+- **Cartesian product:** `np.meshgrid(*arrays, indexing="ij")`, stack on the last axis, reshape to `(-1, k)`.
+
 ## Tricky problems (revisit)
 | # | Why it was tricky | Revisit date |
 |---|---|---|
@@ -165,6 +176,15 @@ Short takeaways while solving. One line per concept is enough.
 | 78 | Projection onto a line | Nov 18 |
 | 79 | Broadcasting points against lines | Nov 18 |
 | 80 | Clipping the window to the array bounds | Nov 18 |
+| 81 | Window count is `len - size + 1` | Nov 21 |
+| 82 | Rank via singular values | Nov 21 |
+| 84 | 4D result of a 2D `sliding_window_view` | Nov 21 |
+| 85 | `__setitem__` override in an ndarray subclass | Nov 21 |
+| 86 | `tensordot` axes vs `einsum` indices | Nov 21 |
+| 87 | `reduceat` vs reshape for block sums | Nov 21 |
+| 88 | Game of Life with shifted views | Nov 21 |
+| 89 | `argpartition` vs `argsort` | Nov 21 |
+| 90 | Cartesian product with `meshgrid` | Nov 21 |
 
 ## Idiomatic tricks I want to remember
 - Prefer vectorized operations and slicing over Python loops
